@@ -1,4 +1,4 @@
-package ex00;
+package ex03;
 
 import java.util.UUID;
 
@@ -29,6 +29,7 @@ public class Transaction {
 	public Transaction(User sender, User recipient, Integer amount) {
 		this.recipient = recipient;
 		this.sender = sender;
+		this.identifier = new UUID(45678, 123);
 
 		if (amount < 0) {
 			setCategory(Category.CREDIT);
@@ -40,6 +41,8 @@ public class Transaction {
 		if (sender.getBalance() < 0 || sender.getBalance() < amount)	{
 			setStatus(Status.FAIL);
 		}	else	{
+			sender.setBalance(sender.getBalance() - amount);
+			recipient.setBalance(amount);
 			setStatus(Status.SUCCESS);
 		}
 	}
@@ -92,4 +95,15 @@ public class Transaction {
 		this.status = status;
 	}
 
+	@Override
+	public String toString() {
+		return "Transaction{" +
+				"identifier=" + identifier +
+				", recipient=" + recipient +
+				", sender=" + sender +
+				", amount=" + amount +
+				", category=" + category +
+				", status=" + status +
+				'}';
+	}
 }
