@@ -1,20 +1,42 @@
-package ex00;
-/*
-
-It is quite likely for different users to have the same name in the system.
-This problem should be solved by adding a special field for a user's unique ID.
-This ID can be any integer number. Specific ID creation logic is described in the next exercise.
-
-/Thus, the following set of states (fields) is typical for User class:
-
-Identifier
-Name
-Balance
-*/
 
 public class User {
-	private Integer	Identifier;
-	private String	Name;
-	private Integer	Balance;
 
+	private Integer identifier;
+
+	private String name;
+
+	private Integer balance;
+
+	public User(String name, Integer balance) {
+		setName(name);
+		setBalance(balance);
+	}
+
+	public Integer getIdentifier() {
+		return identifier;
+	}
+
+	public void setIdentifier(Integer identifier) {
+		this.identifier = identifier;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Integer balance) {
+		if (balance < 0) {
+			this.balance = 0;
+		} else {
+			this.balance = balance;
+		}
+	}
 }
