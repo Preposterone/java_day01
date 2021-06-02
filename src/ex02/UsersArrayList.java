@@ -21,7 +21,7 @@ public class UsersArrayList implements UsersList	{
 	}
 
 	private User [] reallocUsers(User [] users)	{
-		this.capacity *= DEFAULT_SCALE;
+		this.capacity += this.capacity + DEFAULT_SCALE;
 		User [] ret = new User[this.capacity];
 
 		for (int i = 0; i <= size; i++) {
